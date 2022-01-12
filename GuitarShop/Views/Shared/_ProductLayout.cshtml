@@ -1,0 +1,61 @@
+﻿@model CategoriesListModels
+@{
+    Layout = "_MainLayout";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title> </title>
+</head>
+<body>
+    
+        <div class="row  ">
+            <div class="col-2">
+                @if (Model.Categories != null)
+                {
+                <div class="list-group  text-center ml-3 mt-lg-5">
+                    <a asp-controller="Product" asp-action="List" asp-route-id="All" class="btn btn-primary  list-group-item"style="color:blue;">All</a>
+
+                    @foreach (Category category in Model.Categories)
+                    {
+
+                        <a asp-controller="Product" asp-action="List" asp-route-id="@category.Name" class="btn btn-primary list-group-item"style="color:blue;">@category.Name</a>
+
+
+                    }
+
+
+                </div>
+
+                }
+            </div>
+
+
+
+            @RenderBody();
+        </div>
+    
+  
+</body>
+</html>
+ 
+
+
+
+
+
+
+@*<!DOCTYPE html>
+
+    <html>
+    <head>
+        <meta name="viewport" content="width=device-width" />
+        <title>@ViewBag.Title</title>
+    </head>
+    <body>
+        <div>
+            @RenderBody()
+        </div>
+    </body>
+    </html>*@

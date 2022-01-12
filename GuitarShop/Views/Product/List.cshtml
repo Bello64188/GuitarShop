@@ -1,0 +1,93 @@
+﻿@model CategoriesListModels
+@{
+    Layout = "_ProductLayout";
+    ViewData["Title"] = "Product List";
+}
+
+    
+    <div class="col-9 ">
+        @if (Model.SelectedId == "All")
+        {
+            <h2>All Product</h2>
+        }
+        else
+        {
+            <h2>@Model.SelectedId</h2>
+
+        }
+
+        <table class="table table-bordered table-striped w-75">
+
+
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Changes</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (Product mod in Model.Products)
+                {
+
+                    <tr>
+
+
+                        @if (Model.SelectedId == "All")
+
+                        {
+
+
+                            <td>  @mod.Name</td>
+                            <td> @($"{mod.Price:C2}")</td>
+                            <td class="col-4">
+                                <div>
+                                    <a asp-controller="Product" asp-action="Details" asp-route-id="@mod.ProductId" class="btn btn-success">View</a>
+                                    <a asp-controller="Product" asp-action="Update" asp-route-id="@mod.ProductId" class="btn btn-primary">Update</a>
+                                    <a asp-controller="Product" asp-action="Delete" asp-route-id="@mod.ProductId" class="btn btn-danger">Delete</a>
+                                </div>
+
+                            </td>
+
+                        }
+                        else
+                        {
+
+                            @if (Model.SelectedId == mod.Category.Name)
+                            {
+
+                                <td>@mod.Name </td>
+                                <td>@($"{mod.Price:C2}")</td>
+                                <td class="col-4">
+                                    <div>
+                                        <a asp-controller="Product" asp-action="Details" asp-route-id="@mod.ProductId" class="btn btn-success">View</a>
+                                        <a asp-controller="Product" asp-action="Update" asp-route-id="@mod.ProductId" class="btn btn-primary">Update</a>
+                                        <a asp-controller="Product" asp-action="Delete" asp-route-id="@mod.ProductId" class="btn btn-danger">Delete</a>
+
+                                    </div>
+
+                                </td>
+
+                            }
+
+                        }
+                    </tr>
+
+
+                }
+
+
+
+
+            </tbody>
+        </table>
+
+    </div>
+   
+
+
+
+
+   
+
+

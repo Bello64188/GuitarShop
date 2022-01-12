@@ -1,0 +1,13 @@
+﻿@model Product
+@{
+    Layout = "_MainLayout";
+    ViewBag.Title = "Home";
+}
+<h4> Welcome To Guitar Shop</h4>
+
+<h2>@ViewData.Count My Personal Details</h2>
+@foreach (KeyValuePair<string, object> keyValue in ViewData)
+{
+    <div>@keyValue.Key:-@keyValue.Value</div>
+}
+<h2> Price:@((ViewData["Age"]==null)? "":((double)ViewData["Age"]).ToString("c"))</h2>

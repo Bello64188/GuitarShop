@@ -1,0 +1,21 @@
+﻿@model Product
+
+@{
+    ViewData["Title"] = " Product Details";
+}
+
+<h1> Product Details</h1>
+<div class="card card-body  w-25 bg-white " style="font-family:'Times New Roman', Times, serif">
+    <div>ID: @Model.ProductId </div>
+    <div> Product Name: @Model.Name</div>
+   <div>Product Category: @ViewBag.category.Name</div>
+    <div> Product Price: @($"{Model.Price:C2}")</div>
+
+</div>
+
+    
+
+<div>  <a asp-controller="Home" asp-action="Index">Home</a>  </div>
+
+
+
