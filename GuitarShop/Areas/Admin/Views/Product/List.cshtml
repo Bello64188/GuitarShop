@@ -1,0 +1,77 @@
+﻿@model CategoriesListModels
+@{
+    Layout = "_AdminProductLayout";
+    ViewData["Title"] = "List";
+
+}
+
+<div class="col-10">
+    <input type="hidden"    asp-for="@Model.Product.Name"  />
+    <table class="table table-bordered table-striped w-75">
+
+
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Changes</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (Product mod in Model.Products)
+            {
+
+                <tr>
+
+
+                    @if (Model.SelectedId == "All")
+
+                    {
+
+
+                        <td>  @mod.Name</td>
+                        <td> @($"{mod.Price:C2}")</td>
+                        <td class="col-4">
+                            <div class="m-2">
+                                <a asp-area="Admin" asp-controller="Product" asp-action="Update" asp-route-id="@mod.ProductId" class="btn btn-primary w-auto">Update</a>
+                                <a asp-area="Admin" asp-controller="Product" asp-action="Delete" asp-route-id="@mod.ProductId" class="btn btn-danger w-auto">Delete</a>
+                            </div>
+
+                        </td>
+
+                    }
+                    else
+                    {
+
+
+                        @if (Model.SelectedId == mod.Category.Name)
+                        {
+
+                            <td>@mod.Name </td>
+                            <td>@($"{mod.Price:C2}")</td>
+                            <td class="col-4">
+                                <div class="m-2">
+                                    <a asp-area="Admin" asp-controller="Product" asp-action="Update" asp-route-id="@mod.ProductId" class="btn btn-primary w-auto">Update</a>
+                                    <a asp-area="Admin" asp-controller="Product" asp-action="Delete" asp-route-id="@mod.ProductId" class="btn btn-danger w-auto">Delete</a>
+
+                                </div>
+
+                            </td>
+
+                        }
+
+                    }
+                </tr>
+
+
+            }
+
+
+
+
+        </tbody>
+    </table>
+
+</div>
+

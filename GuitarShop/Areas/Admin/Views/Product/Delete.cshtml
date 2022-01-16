@@ -1,0 +1,21 @@
+﻿@model CategoriesListModels
+@{
+    Layout = "_AdminLayout";
+    ViewData["Title"] = "Delete";
+}
+
+<div class="container w-50">
+    <h1 class="text-black-50">Confirm Delete</h1>
+    <form asp-action="Delete" method="post">
+        <input type="hidden" asp-for="@Model.Product.ProductId" />
+        <input type="hidden" asp-for="@Model.Product.Name" />
+        <h2>Name:@Model.Product.Name</h2>
+        <h3>Category:@Model.Product.Category.Name</h3>
+        <h3>Price:@($"{Model.Product.Price:c2}")</h3>
+        <input type="submit" value="Delete" class="btn btn-danger col-2 ml-3" />
+        <a asp-area="Admin" asp-controller="Home" asp-action="Index" class="btn btn-primary col-2 ml-3">Cancel</a>
+    </form>
+
+
+</div>>
+

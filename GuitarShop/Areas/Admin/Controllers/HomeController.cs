@@ -11,7 +11,17 @@ namespace GuitarShop.Areas.Admin.Controllers
     {
         public IActionResult Index()
         {
+            return View(); 
+        }
+
+        public IActionResult About()
+        {
             return View();
+        }
+
+        public IActionResult SiteView()
+        {
+             return View(); 
         }
     }
 }

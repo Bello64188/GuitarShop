@@ -1,4 +1,10 @@
-﻿<!DOCTYPE html>
+﻿@{
+    Layout = "_ALayout";
+
+    string controller = ViewContext.RouteData.Values["controller"].ToString();
+    string action = ViewContext.RouteData.Values["action"].ToString();
+}
+<!DOCTYPE html>
 
 <html>
 <head>
@@ -7,7 +13,42 @@
 </head>
 <body>
     <div>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+            <a class="navbar-brand" href="/">My Guitar Shop</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+                    <li class="nav-item ">
+                        <a class="nav-link @(controller=="Home" && action=="Index"? "active":"")" asp-area="Admin" asp-controller="Home" asp-action="Index">Admin</a>
+
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link @(controller=="Product"? "active" :"")" asp-area="Admin" asp-controller="Product" asp-action="List">Products</a>
+
+                    </li>
+                    <li class="nav-item">
+
+                        <a class="nav-link @(controller=="Home" && action=="About"? "active" :"")" asp-area="Admin" asp-controller="Home" asp-action="About">Categories</a>
+
+                    </li>
+                    <li class="nav-item ">
+
+                        <a class="nav-link  @(controller=="Home" && action=="SiteView"? "active" :"") " asp-area="Admin" asp-controller="Home" asp-action="SiteView" style="margin-left:53em;">View Site</a>
+
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <hr />
         @RenderBody()
+
+        <footer>
+            <hr />
+            <p class="border-dark">Copyright: @DateTime.Now.Year &copy; - Guitar Shop</p>
+        </footer>
+
     </div>
 </body>
 </html>

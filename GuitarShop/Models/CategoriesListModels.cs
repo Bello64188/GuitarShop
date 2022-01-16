@@ -4,6 +4,7 @@ namespace GuitarShop.Models
 {
     public class CategoriesListModels
     {
+        public Product Product { get; set; }
         public string SelectedId { get; set; }
 
         public IList<Category> Categories { get; set; }
@@ -11,7 +12,7 @@ namespace GuitarShop.Models
 
         public string  CheckActiveCategory(string category) 
             {
-                return  category == SelectedId ? "Active" : "";
+                return  category == SelectedId ? "active" : "";
             } 
 
     }

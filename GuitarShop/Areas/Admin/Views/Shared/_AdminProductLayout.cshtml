@@ -1,18 +1,32 @@
 ﻿@model CategoriesListModels
 @{
-    Layout = "_MainLayout";
+    
+    Layout = "_AdminLayout";
 }
 
 <!DOCTYPE html>
+
 <html>
 <head>
-    <title> </title>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
     <link href="~/css/ProductList.css" rel="stylesheet" />
 </head>
 <body>
-    <h1 class=" text-black-50 ml-3">Product List</h1>
-
+    <h1 class="text-black-50">Product Manager</h1>
     <div class="w-75">
+        <div class="offset-3 border-danger" style="{border-radius:2px;}">
+            <input type="hidden" asp-for="@Model.Product.Name" />
+            @if (TempData.Keys.Contains("message"))
+            {
+
+                <h1 class="bg-info text-center text-white w-auto">
+                    @TempData["message"]
+                </h1>
+            }
+
+        </div>
+
         <div class="row  ">
             <div class="col-2">
                 @if (Model.Categories != null)
@@ -40,28 +54,9 @@
             @RenderBody();
         </div>
 
-    </div>
+        <a class="btn btn-primary  offset-2 " asp-area="Admin" asp-controller="Product" asp-action="Add">Add New Product</a>
 
+    </div>
 
 </body>
 </html>
- 
-
-
-
-
-
-
-@*<!DOCTYPE html>
-
-    <html>
-    <head>
-        <meta name="viewport" content="width=device-width" />
-        <title>@ViewBag.Title</title>
-    </head>
-    <body>
-        <div>
-            @RenderBody()
-        </div>
-    </body>
-    </html>*@
